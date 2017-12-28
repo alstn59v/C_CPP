@@ -12,7 +12,7 @@ using namespace std;
 
 int getJulianValue(int year, int month); // julian값을 이용한 기준일로부터 지난 일수를 계산하는 함수
 int getMonthsMaxDay(int year, int month); // 윤달과 월별 일수를 고려한 월별 최대 일수를 구하는 함수
-void printCalendar(int wd_start, int last); // 월별 달력을 출력하는 함수
+void printCalendar(int year, string monthStr, int wd_start, int last); // 월별 달력을 출력하는 함수
 
 int main()
 {
@@ -48,8 +48,7 @@ int main()
 		weekday_distinction = julian%7; // 일주일이 7일이므로 나머지 연산자 이용
 		wd_start = weekday_distinction; // 시작 요일 변수 초기화
 		last = max_day_of_month; // 마지막 날짜 변수 초기화
-		cout << "     " << monthStr[m-1] << " " << year << endl;
-		printCalendar(wd_start, last);
+		printCalendar(year, monthStr[m-1], wd_start, last);
 		cout << endl << endl;
 	}
 
@@ -102,8 +101,9 @@ int getMonthsMaxDay(int year, int month)
 	return max_day_of_month;
 }
 
-void printCalendar(int wd_start, int last)
+void printCalendar(int year, string monthStr, int wd_start, int last)
 { // 월별 달력을 출력하는 함수
+	cout << "     " << monthStr << " " << year << endl;
 	cout << "  M  T  W  T  F  S  S" << endl; // Mon Tue Wed Thur Fri Sat Sun
 	for(int i = 1-wd_start; i <= last; i++)
 	{

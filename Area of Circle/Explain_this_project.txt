@@ -1,0 +1,2 @@
+This Program calculate area of circle.
+If you input radius of circle, you can get area of circle.
